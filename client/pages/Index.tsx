@@ -12,21 +12,18 @@ export default function Index() {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [remember, setRemember] = useState(true);
-  const [emailTouched, setEmailTouched] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
 
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-    if (!isEmailValid(email)) {
-      toast.error("Adresse e-mail invalide", { description: "Veuillez renseigner une adresse complète (ex: nom@domaine.com)" });
+    const hasError = !isEmailValid(email) || password.length < 6;
+    if (hasError) {
+      toast.error("votre email ou votre mot de passe sont incorrect", { position: "top-center" });
       return;
     }
-    toast.success("Signed in", { description: `Welcome back, ${email || "user"}!` });
+    toast.success("Signed in", { description: `Welcome back, ${email || "user"}!`, position: "top-center" });
   };
 
-  const showEmailError = (emailTouched || submitted) && email.length > 0 && !isEmailValid(email);
-  const isDisabled = !email || password.length < 6 || showEmailError;
+  const isDisabled = false;
 
   return (
     <div className="min-h-screen bg-[hsl(var(--background))]">
@@ -50,7 +47,7 @@ export default function Index() {
               <p className="mt-1 text-sm text-muted-foreground">Accédez à votre espace en toute sécurité</p>
             </header>
 
-            <form onSubmit={onSubmit} className="px-6 pb-6">
+            <form onSubmit={onSubmit} noValidate className="px-6 pb-6">
               <div className="space-y-4">
                 <div>
                   <label className="mb-2 block text-sm font-medium">Email ou numéro</label>
@@ -62,14 +59,9 @@ export default function Index() {
                       placeholder="jean@example.com"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      onBlur={() => setEmailTouched(true)}
-                      aria-invalid={showEmailError}
-                      className={`h-12 rounded-full pl-12 pr-4 bg-white/90 shadow-sm focus-visible:ring-[hsl(var(--ring))] ${showEmailError ? "border-destructive focus-visible:ring-destructive" : ""}`}
+                      className="h-12 rounded-full pl-12 pr-4 bg-white/90 shadow-sm focus-visible:ring-[hsl(var(--ring))]"
                     />
                   </div>
-                  {showEmailError && (
-                    <p className="mt-1 text-xs text-destructive">Adresse e-mail invalide</p>
-                  )}
                 </div>
 
                 <div>
@@ -110,8 +102,7 @@ export default function Index() {
 
                 <Button
                   type="submit"
-                  disabled={isDisabled}
-                  className="h-12 w-full rounded-full bg-primary text-primary-foreground shadow-md hover:bg-primary/90 disabled:opacity-50"
+                  className="h-12 w-full rounded-full bg-primary text-primary-foreground shadow-md hover:bg-primary/90"
                 >
                   Se connecter
                 </Button>
