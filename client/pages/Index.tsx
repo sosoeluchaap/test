@@ -20,19 +20,20 @@ export default function Index() {
 
   return (
     <div className="min-h-screen bg-[hsl(var(--background))]">
-      <div className="relative">
-        <img
-          src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1920&auto=format&fit=crop"
-          alt="Hero"
-          className="h-[36vh] md:h-[44vh] w-full object-cover"
-        />
+      <div
+        className="relative h-[36vh] md:h-[44vh] bg-center bg-cover bg-no-repeat"
+        style={{
+          backgroundImage:
+            "url(https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1920&auto=format&fit=crop)",
+        }}
+      >
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/30 via-black/10 to-transparent" />
         <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-b from-transparent to-[hsl(var(--background))]" />
       </div>
 
-      <main className="-mt-24 md:-mt-28 px-4 md:px-6">
+      <main className="relative z-20 -mt-24 md:-mt-28 px-4 md:px-6">
         <section className="mx-auto max-w-md">
-          <div className="rounded-3xl bg-card text-card-foreground shadow-xl ring-1 ring-black/5 overflow-hidden">
+          <div className="rounded-3xl bg-card text-card-foreground shadow-2xl ring-1 ring-black/5 overflow-hidden">
             <header className="px-6 pt-6 pb-4">
               <p className="text-xs uppercase tracking-wider text-muted-foreground">Bienvenue</p>
               <h1 className="mt-1 text-2xl font-bold leading-tight">Connectez-vous</h1>
