@@ -20,9 +20,9 @@ export default function Index() {
 
   return (
     <div className="min-h-screen bg-[hsl(var(--background))]">
-      <div className="relative">
+      <div className="relative overflow-hidden rounded-b-[2.5rem] shadow-sm">
         <div className="h-[36vh] md:h-[44vh] w-full bg-brand-gradient" />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/0 to-black/0 rounded-b-[2.5rem]" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/10 via-black/0 to-black/0" />
       </div>
 
       <main className="-mt-24 md:-mt-28 px-4 md:px-6">
