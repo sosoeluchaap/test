@@ -17,10 +17,15 @@ export default function Index() {
     e.preventDefault();
     const hasError = !isEmailValid(email) || password.length < 6;
     if (hasError) {
-      toast.error("votre email ou votre mot de passe sont incorrect", { position: "top-center" });
+      toast.error("votre email ou votre mot de passe sont incorrect", {
+        position: "top-center",
+      });
       return;
     }
-    toast.success("Signed in", { description: `Welcome back, ${email || "user"}!`, position: "top-center" });
+    toast.success("Signed in", {
+      description: `Welcome back, ${email || "user"}!`,
+      position: "top-center",
+    });
   };
 
   const isDisabled = false;
@@ -42,15 +47,23 @@ export default function Index() {
         <section className="mx-auto max-w-md">
           <div className="rounded-3xl bg-card text-card-foreground shadow-xl ring-1 ring-black/5 overflow-hidden">
             <header className="px-6 pt-6 pb-4">
-              <p className="text-xs uppercase tracking-wider text-muted-foreground">Bienvenue</p>
-              <h1 className="mt-1 text-2xl font-bold leading-tight">Connectez-vous</h1>
-              <p className="mt-1 text-sm text-muted-foreground">Accédez à votre espace en toute sécurité</p>
+              <p className="text-xs uppercase tracking-wider text-muted-foreground">
+                Bienvenue
+              </p>
+              <h1 className="mt-1 text-2xl font-bold leading-tight">
+                Connectez-vous
+              </h1>
+              <p className="mt-1 text-sm text-muted-foreground">
+                Accédez à votre espace en toute sécurité
+              </p>
             </header>
 
             <form onSubmit={onSubmit} noValidate className="px-6 pb-6">
               <div className="space-y-4">
                 <div>
-                  <label className="mb-2 block text-sm font-medium">Email ou numéro</label>
+                  <label className="mb-2 block text-sm font-medium">
+                    Email ou numéro
+                  </label>
                   <div className="relative">
                     <Mail className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                     <Input
@@ -65,7 +78,9 @@ export default function Index() {
                 </div>
 
                 <div>
-                  <label className="mb-2 block text-sm font-medium">Mot de passe</label>
+                  <label className="mb-2 block text-sm font-medium">
+                    Mot de passe
+                  </label>
                   <div className="relative">
                     <Lock className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                     <Input
@@ -79,9 +94,17 @@ export default function Index() {
                       type="button"
                       onClick={() => setShowPassword((s) => !s)}
                       className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
-                      aria-label={showPassword ? "Masquer le mot de passe" : "Afficher le mot de passe"}
+                      aria-label={
+                        showPassword
+                          ? "Masquer le mot de passe"
+                          : "Afficher le mot de passe"
+                      }
                     >
-                      {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
+                      {showPassword ? (
+                        <EyeOff className="h-5 w-5" />
+                      ) : (
+                        <Eye className="h-5 w-5" />
+                      )}
                     </button>
                   </div>
                 </div>
@@ -89,11 +112,18 @@ export default function Index() {
                 <div className="flex items-center justify-between py-1">
                   <div className="flex items-center gap-3">
                     <Switch checked={remember} onCheckedChange={setRemember} />
-                    <span className="text-sm text-muted-foreground">Se souvenir de moi</span>
+                    <span className="text-sm text-muted-foreground">
+                      Se souvenir de moi
+                    </span>
                   </div>
                   <button
                     type="button"
-                    onClick={() => toast("Réinitialisation", { description: "Un lien de réinitialisation a été envoyé si l'email existe." })}
+                    onClick={() =>
+                      toast("Réinitialisation", {
+                        description:
+                          "Un lien de réinitialisation a été envoyé si l'email existe.",
+                      })
+                    }
                     className="text-sm font-medium text-primary hover:underline"
                   >
                     Mot de passe oublié ?
