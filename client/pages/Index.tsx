@@ -33,7 +33,7 @@ export default function Index() {
 
       <main className="relative z-20 -mt-24 md:-mt-28 px-4 md:px-6">
         <section className="mx-auto max-w-md">
-          <div className="rounded-3xl bg-card text-card-foreground shadow-2xl ring-1 ring-black/5 overflow-hidden">
+          <div className="rounded-3xl bg-card text-card-foreground shadow-xl ring-1 ring-black/5 overflow-hidden">
             <header className="px-6 pt-6 pb-4">
               <p className="text-xs uppercase tracking-wider text-muted-foreground">Bienvenue</p>
               <h1 className="mt-1 text-2xl font-bold leading-tight">Connectez-vous</h1>
