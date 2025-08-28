@@ -21,8 +21,13 @@ export default function Index() {
   return (
     <div className="min-h-screen bg-[hsl(var(--background))]">
       <div className="relative overflow-hidden rounded-b-[2.5rem] shadow-sm">
-        <div className="h-[36vh] md:h-[44vh] w-full bg-brand-gradient" />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/10 via-black/0 to-black/0" />
+        <img
+          src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1920&auto=format&fit=crop"
+          alt="Hero"
+          className="h-[36vh] md:h-[44vh] w-full object-cover"
+        />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/30 via-black/10 to-transparent" />
+        <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-b from-transparent to-[hsl(var(--background))]" />
       </div>
 
       <main className="-mt-24 md:-mt-28 px-4 md:px-6">
