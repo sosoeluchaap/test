@@ -62,9 +62,14 @@ export default function Index() {
                       placeholder="jean@example.com"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      className="h-12 rounded-full pl-12 pr-4 bg-white/90 shadow-sm focus-visible:ring-[hsl(var(--ring))]"
+                      onBlur={() => setEmailTouched(true)}
+                      aria-invalid={showEmailError}
+                      className={`h-12 rounded-full pl-12 pr-4 bg-white/90 shadow-sm focus-visible:ring-[hsl(var(--ring))] ${showEmailError ? "border-destructive focus-visible:ring-destructive" : ""}`}
                     />
                   </div>
+                  {showEmailError && (
+                    <p className="mt-1 text-xs text-destructive">Adresse e-mail invalide</p>
+                  )}
                 </div>
 
                 <div>
