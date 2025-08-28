@@ -5,18 +5,28 @@ import { Switch } from "@/components/ui/switch";
 import { Mail, Lock, Eye, EyeOff, CheckCircle2 } from "lucide-react";
 import { toast } from "sonner";
 
+const isEmailValid = (v: string) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i.test(v);
+
 export default function Index() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [remember, setRemember] = useState(true);
+  const [emailTouched, setEmailTouched] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    setSubmitted(true);
+    if (!isEmailValid(email)) {
+      toast.error("Adresse e-mail invalide", { description: "Veuillez renseigner une adresse complète (ex: nom@domaine.com)" });
+      return;
+    }
     toast.success("Signed in", { description: `Welcome back, ${email || "user"}!` });
   };
 
-  const isDisabled = !email || password.length < 6;
+  const showEmailError = (emailTouched || submitted) && email.length > 0 && !isEmailValid(email);
+  const isDisabled = !email || password.length < 6 || showEmailError;
 
   return (
     <div className="min-h-screen bg-[hsl(var(--background))]">
